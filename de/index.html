@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Max Consulting – Podgorica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sand: #E4EBF5;
+    --sand-dark: #C2D0E8;
+    --cream: #F2F5FA;
+    --ink: #0D1E3A;
+    --ink-mid: #2E4D7A;
+    --ink-light: #6B82A8;
+    --gold: #1A3B6E;
+    --gold-light: #2E5499;
+    --gold-pale: #E4EBF5;
+    --teal: #1A3B6E;
+    --teal-light: #E4EBF5;
+    --white: #FFFFFF;
+    --radius: 12px;
+    --radius-sm: 6px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Sora', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(13,30,58,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--sand-dark);
+    padding: 0 5vw;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.5rem;
+    color: var(--cream);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+
+  .nav-logo span { color: var(--gold-light); }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: rgba(242,245,250,0.75);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    background: var(--cream);
+    color: var(--ink) !important;
+    padding: 0.5rem 1.25rem;
+    border-radius: var(--radius-sm);
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--gold-light) !important; color: var(--cream) !important; }
+
+  .lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-left: 1rem;
+    border: 1px solid rgba(242,245,250,0.2);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+  }
+
+  .lang-switcher a {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    padding: 0.3rem 0.65rem;
+    text-decoration: none;
+    color: rgba(242,245,250,0.6);
+    transition: background 0.15s, color 0.15s;
+    text-transform: uppercase;
+  }
+
+  .lang-switcher a.active {
+    background: var(--cream);
+    color: var(--ink);
+  }
+
+  .lang-switcher a:not(.active):hover {
+    background: rgba(242,245,250,0.12);
+    color: var(--cream);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--ink);
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 64px 5vw 0;
+    gap: 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 70% 40%, rgba(46,84,153,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-content { position: relative; z-index: 1; }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1px;
+    background: var(--gold-light);
+  }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  h1 em { font-style: italic; color: var(--gold); }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    color: rgba(242,245,250,0.7);
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: var(--cream);
+    color: var(--ink);
+    padding: 0.85rem 2rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--gold-light); color: var(--cream); transform: translateY(-1px); }
+
+  .btn-outline {
+    border: 1.5px solid rgba(242,245,250,0.35);
+    color: rgba(242,245,250,0.8);
+    padding: 0.85rem 2rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+    display: inline-block;
+  }
+
+  .btn-outline:hover { border-color: var(--cream); color: var(--cream); }
+
+  .hero-visual {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .stat-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .stat-card {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.5rem;
+  }
+
+  .stat-card .num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    color: var(--cream);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-card .num span { color: var(--gold-light); }
+
+  .stat-card .label {
+    font-size: 0.78rem;
+    color: rgba(242,245,250,0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+  }
+
+  .trust-strip {
+    background: var(--sand);
+    border-radius: var(--radius);
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .trust-icon {
+    width: 36px; height: 36px;
+    background: var(--gold-pale);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .trust-icon svg { width: 18px; height: 18px; color: var(--gold); }
+  .trust-text { font-size: 0.85rem; color: var(--ink-mid); line-height: 1.4; }
+  .trust-text strong { color: var(--ink); font-weight: 600; }
+
+  /* ── LANG STRIP ── */
+  .lang-strip {
+    background: var(--gold);
+    color: var(--cream);
+    padding: 0.75rem 5vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    flex-wrap: wrap;
+  }
+
+  .lang-item { display: flex; align-items: center; gap: 0.5rem; }
+  .lang-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.5); }
+
+  /* ── SERVICES ── */
+  section { padding: 5rem 5vw; }
+
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    color: var(--ink);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+
+  .section-intro {
+    font-size: 1rem;
+    color: var(--ink-mid);
+    max-width: 560px;
+    font-weight: 300;
+    line-height: 1.7;
+    margin-bottom: 3rem;
+  }
+
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+
+  .service-card {
+    background: var(--white);
+    border: 1px solid var(--sand-dark);
+    border-radius: var(--radius);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: block;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(13,30,58,0.07); }
+  .service-card:hover::before { transform: scaleX(1); }
+
+  .service-icon {
+    width: 52px; height: 52px;
+    background: var(--sand);
+    border-radius: var(--radius-sm);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .service-icon svg { width: 26px; height: 26px; color: var(--gold); }
+
+  .service-card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.35rem;
+    color: var(--ink);
+    margin-bottom: 0.25rem;
+    letter-spacing: -0.01em;
+  }
+
+  .service-subtitle {
+    font-size: 0.78rem;
+    color: var(--gold);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    margin-bottom: 1rem;
+  }
+
+  .service-card p {
+    font-size: 0.9rem;
+    color: var(--ink-mid);
+    line-height: 1.65;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+  }
+
+  .service-list { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+
+  .service-list li {
+    font-size: 0.83rem;
+    color: var(--ink-mid);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .service-list li::before {
+    content: '→';
+    color: var(--gold);
+    flex-shrink: 0;
+    font-size: 0.85rem;
+    margin-top: 1px;
+  }
+
+  /* ── HOW ── */
+  .how-section { background: var(--sand); }
+
+  .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 3rem; }
+
+  .step { padding: 1.5rem; position: relative; }
+
+  .step-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 3rem;
+    color: var(--sand-dark);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .step h4 { font-size: 0.95rem; font-weight: 600; color: var(--ink); margin-bottom: 0.5rem; }
+  .step p { font-size: 0.85rem; color: var(--ink-mid); font-weight: 300; line-height: 1.6; }
+
+  .step-connector {
+    position: absolute;
+    top: 2.5rem; right: -0.75rem;
+    width: 1.5rem; height: 1px;
+    background: var(--gold-light);
+  }
+
+  .step:last-child .step-connector { display: none; }
+
+  /* ── WHO ── */
+  .who-section { background: var(--ink); color: var(--cream); }
+  .who-section .section-label { color: var(--gold-light); }
+  .who-section .section-label::before { background: var(--gold-light); }
+  .who-section h2 { color: var(--cream); }
+  .who-section .section-intro { color: rgba(242,245,250,0.65); }
+
+  .audience-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+
+  .audience-card { border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius); padding: 1.75rem; }
+
+  .audience-flag { font-size: 1.75rem; margin-bottom: 1rem; line-height: 1; }
+  .audience-card h4 { font-size: 1rem; font-weight: 600; color: var(--cream); margin-bottom: 0.5rem; }
+  .audience-card p { font-size: 0.85rem; color: rgba(242,245,250,0.6); font-weight: 300; line-height: 1.6; }
+
+  .lang-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.75rem; }
+
+  .lang-tag {
+    background: rgba(46,84,153,0.15);
+    color: var(--gold-light);
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.2rem 0.65rem;
+    border-radius: 100px;
+    letter-spacing: 0.03em;
+  }
+
+  /* ── FAQ ── */
+  .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 3rem; }
+
+  .faq-item { background: var(--white); border: 1px solid var(--sand-dark); border-radius: var(--radius); overflow: hidden; }
+
+  .faq-q {
+    padding: 1.25rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--ink);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    user-select: none;
+    transition: background 0.15s;
+  }
+
+  .faq-q:hover { background: var(--sand); }
+
+  .faq-toggle {
+    width: 24px; height: 24px;
+    flex-shrink: 0;
+    border: 1px solid var(--sand-dark);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+    color: var(--gold);
+    transition: transform 0.2s, background 0.2s;
+    line-height: 1;
+  }
+
+  .faq-item.open .faq-toggle { transform: rotate(45deg); background: var(--gold-pale); }
+
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    font-size: 0.875rem;
+    color: var(--ink-mid);
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  .faq-item.open .faq-a { max-height: 300px; }
+  .faq-a-inner { padding: 0 1.5rem 1.25rem; }
+
+  /* ── CONTACT ── */
+  .contact-section { background: var(--sand); }
+
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; margin-top: 3rem; }
+
+  .contact-info h3 { font-family: 'DM Serif Display', serif; font-size: 1.6rem; color: var(--ink); margin-bottom: 1rem; }
+  .contact-info p { font-size: 0.9rem; color: var(--ink-mid); font-weight: 300; line-height: 1.7; margin-bottom: 2rem; }
+
+  .contact-details { display: flex; flex-direction: column; gap: 0.75rem; }
+
+  .contact-row { display: flex; align-items: flex-start; gap: 0.75rem; }
+
+  .contact-row-icon {
+    width: 36px; height: 36px;
+    background: var(--white);
+    border-radius: var(--radius-sm);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    border: 1px solid var(--sand-dark);
+  }
+
+  .contact-row-icon svg { width: 18px; height: 18px; color: var(--gold); }
+  .contact-row-text { font-size: 0.875rem; color: var(--ink-mid); font-weight: 400; padding-top: 8px; }
+  .contact-row-text a { color: var(--teal); text-decoration: none; }
+  .contact-row-text a:hover { text-decoration: underline; }
+
+  .contact-form { background: var(--white); border-radius: var(--radius); padding: 2rem; border: 1px solid var(--sand-dark); }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+
+  label { font-size: 0.8rem; font-weight: 500; color: var(--ink-mid); text-transform: uppercase; letter-spacing: 0.05em; }
+
+  input, select, textarea {
+    font-family: 'Sora', sans-serif;
+    font-size: 0.9rem;
+    border: 1px solid var(--sand-dark);
+    border-radius: var(--radius-sm);
+    padding: 0.7rem 1rem;
+    background: var(--cream);
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+
+  input:focus, select:focus, textarea:focus { border-color: var(--gold); }
+  textarea { resize: vertical; min-height: 90px; }
+
+  .form-submit {
+    background: var(--ink);
+    color: var(--cream);
+    border: none;
+    padding: 0.9rem 2rem;
+    border-radius: var(--radius-sm);
+    font-family: 'Sora', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.2s;
+  }
+
+  .form-submit:hover { background: var(--gold); color: var(--ink); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: rgba(242,245,250,0.55);
+    padding: 2rem 5vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.8rem;
+  }
+
+  .footer-logo { font-family: 'DM Serif Display', serif; font-size: 1.25rem; color: var(--cream); text-decoration: none; }
+  .footer-logo span { color: var(--gold-light); }
+  footer a { color: rgba(242,245,250,0.55); text-decoration: none; }
+  footer a:hover { color: var(--gold-light); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero {
+    background: var(--ink); grid-template-columns: 1fr; padding-top: 96px; gap: 2rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .steps-grid { grid-template-columns: 1fr 1fr; }
+    .audience-grid { grid-template-columns: 1fr 1fr; }
+    .faq-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .nav-links { display: none; }
+    h1 { font-size: 2.4rem; }
+    .step-connector { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    .steps-grid { grid-template-columns: 1fr; }
+    .stat-cards { grid-template-columns: 1fr 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .lang-strip { gap: 0.75rem; }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-up { animation: fadeUp 0.7s ease both; }
+  .fade-up-1 { animation-delay: 0.1s; }
+  .fade-up-2 { animation-delay: 0.2s; }
+  .fade-up-3 { animation-delay: 0.3s; }
+  .fade-up-4 { animation-delay: 0.4s; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Max <span>Consulting</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Leistungen</a></li>
+    <li><a href="#how">Wie wir arbeiten</a></li>
+    <li><a href="#who">Für wen</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact" class="nav-cta">Kontakt</a></li>
+  </ul>
+  <div class="lang-switcher">
+    <a href="/en/">EN</a>
+    <a href="/ru/">RU</a>
+    <a href="/de/" class="active">DE</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow fade-up">Podgorica, Montenegro</div>
+    <h1 class="fade-up fade-up-1">Ihr Wegweiser für<br>Business und Leben<br>in <em>Montenegro</em></h1>
+    <p class="hero-sub fade-up fade-up-2">
+      Wir begleiten Sie Schritt für Schritt — ob Firmengründung, Buchhaltung über unsere Partner oder Aufenthaltserlaubnis. Kein Behördendeutsch, keine Überforderung. Nur klare Unterstützung von Menschen, die das System kennen.
+    </p>
+    <div class="hero-actions fade-up fade-up-3">
+      <a href="#services" class="btn-primary">Unsere Leistungen</a>
+      <a href="#contact" class="btn-outline">Schreiben Sie uns →</a>
+    </div>
+  </div>
+
+  <div class="hero-visual fade-up fade-up-4">
+    <div class="stat-cards">
+      <div class="stat-card">
+        <div class="num">d.o.o<span>.</span></div>
+        <div class="label">Firmengründung</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">3<span>+</span></div>
+        <div class="label">Sprachen</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">PB</div>
+        <div class="label">Aufenthaltserlaubnis</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">PDG</div>
+        <div class="label">Podgorica, MNE</div>
+      </div>
+    </div>
+    <div class="trust-strip">
+      <div class="trust-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+      </div>
+      <p class="trust-text"><strong>Lokale Expertise, persönlicher Ansatz.</strong> Wir sprechen Deutsch, Englisch, Russisch und Montenegrinisch — und verstehen Ihre Situation genau.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LANG STRIP -->
+<div class="lang-strip">
+  <div class="lang-item"><div class="lang-dot"></div>Говорим по-русски</div>
+  <div class="lang-item"><div class="lang-dot"></div>Govorimo crnogorski</div>
+  <div class="lang-item"><div class="lang-dot"></div>We speak English</div>
+  <div class="lang-item"><div class="lang-dot"></div>Wir sprechen Deutsch</div>
+</div>
+
+<!-- LEISTUNGEN -->
+<section id="services">
+  <div class="section-label">Was wir tun</div>
+  <h2>Drei Bereiche, in denen<br>wir wirklich gut sind</h2>
+  <p class="section-intro">Wir kümmern uns um die praktischen Seiten des Geschäfts- und Alltagslebens in Montenegro — damit Sie sich auf das Wesentliche konzentrieren können.</p>
+
+  <div class="services-grid">
+
+    <!-- Buchhaltung -->
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <rect x="3" y="3" width="18" height="18" rx="2"/>
+          <path d="M9 9h1m4 0h1M9 12h1m4 0h1M9 15h1m4 0h1"/>
+        </svg>
+      </div>
+      <h3>Buchhaltung &amp; Finanzen</h3>
+      <div class="service-subtitle">Računovodstvo / Рачуноводство</div>
+      <p>Saubere Buchhaltung von Anfang an schützt Ihre Firma und Ihren Aufenthaltsstatus. Über unsere geprüften Partnerbuchhalter sorgen wir dafür, dass Ihre Bücher stimmen, Fristen eingehalten werden und Sie immer den Überblick haben — ohne Sprachbarriere.</p>
+      <ul class="service-list">
+        <li>Zugang zu geprüften, deutschsprachigen Buchhaltern</li>
+        <li>Volle Compliance — MwSt. (PDV), Körperschaftsteuer, Lohnabrechnung</li>
+        <li>Wir bleiben involviert, damit nichts verloren geht</li>
+        <li>Monatliche Berichte in verständlicher Sprache</li>
+        <li>Ein Ansprechpartner für alle Finanzfragen</li>
+      </ul>
+    </div>
+
+    <!-- Firmengründung -->
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-5a3 3 0 016 0v5"/>
+        </svg>
+      </div>
+      <h3>Firmengründung</h3>
+      <div class="service-subtitle">Osnivanje DOO / GmbH-Equivalent</div>
+      <p>Von der Wahl der Rechtsform bis zum ersten Firmenstempel — wir führen Sie durch jeden Schritt der DOO-Gründung (GmbH-Äquivalent) in Montenegro, ohne unnötige Komplikationen.</p>
+      <ul class="service-list">
+        <li>DOO-Registrierung beim Handelsregister (CRPS)</li>
+        <li>Auswahl der Geschäftstätigkeiten (djelatnosti)</li>
+        <li>Unterstützung bei der Kontoeröffnung</li>
+        <li>Steuerregistrierung &amp; Steuernummer (PIB)</li>
+        <li>Geschäftsadresse (sjedište) bei Bedarf</li>
+      </ul>
+    </div>
+
+    <!-- Aufenthaltserlaubnis -->
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+          <circle cx="12" cy="10" r="3"/>
+        </svg>
+      </div>
+      <h3>Aufenthaltserlaubnis</h3>
+      <div class="service-subtitle">Privremeni boravak / Временное проживание</div>
+      <p>Das montenegrinische Aufenthaltsrecht kann verwirrend sein. Wir erklären Ihre Optionen klar — einschließlich des Wegs über die Geschäftsführerschaft — und helfen Ihnen, die richtigen Unterlagen zusammenzustellen.</p>
+      <ul class="service-list">
+        <li>Aufenthaltserlaubnis über DOO-Geschäftsführerschaft</li>
+        <li>Dokumenten-Checkliste &amp; Übersetzungshilfe</li>
+        <li>Begleitung zum Termin beim Innenministerium (MUP)</li>
+        <li>Fristenüberwachung &amp; Verlängerungserinnerungen</li>
+        <li>Anträge für Familienangehörige</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- WIE WIR ARBEITEN -->
+<section id="how" class="how-section">
+  <div class="section-label">Unser Ansatz</div>
+  <h2>So arbeiten wir mit Ihnen</h2>
+  <p class="section-intro">Kein Konzernprozess, kein Ticket-System. Wir sind ein kleines Team — und Sie wissen immer, mit wem Sie sprechen.</p>
+
+  <div class="steps-grid">
+    <div class="step">
+      <div class="step-connector"></div>
+      <div class="step-num">01</div>
+      <h4>Kostenloses Erstgespräch</h4>
+      <p>Schildern Sie uns Ihre Situation — wir hören zu, stellen Fragen und geben Ihnen ein ehrliches Bild davon, was auf Sie zukommt und wie wir helfen können.</p>
+    </div>
+    <div class="step">
+      <div class="step-connector"></div>
+      <div class="step-num">02</div>
+      <h4>Klarer Plan, klare Kosten</h4>
+      <p>Wir legen genau dar, was zu tun ist, was es kostet und was wir übernehmen — und was Sie selbst erledigen müssen.</p>
+    </div>
+    <div class="step">
+      <div class="step-connector"></div>
+      <div class="step-num">03</div>
+      <h4>Wir kümmern uns ums Papierwerk</h4>
+      <p>Formulare, Einreichungen, Behördentermine — wir erledigen den bürokratischen Teil, damit Sie keine Tage in Ämtern verbringen müssen.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <h4>Laufende Unterstützung</h4>
+      <p>Nach der Einrichtung bleiben wir ansprechbar. Verlängerungen, neue Fragen, Vermittlung weiterer Experten — wir sind da, wenn Sie uns brauchen.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FÜR WEN -->
+<section id="who" class="who-section">
+  <div class="section-label">Für wen wir da sind</div>
+  <h2>Für Menschen, die hier<br>neu anfangen</h2>
+  <p class="section-intro">Die meisten unserer Kunden sind Neuankömmlinge in Montenegro — Menschen, die herausfinden, wie man in einem Land mit eigenen Regeln und Rhythmen lebt und arbeitet.</p>
+
+  <div class="audience-grid">
+    <div class="audience-card">
+      <div class="audience-flag">🇷🇺</div>
+      <h4>Russischsprachige Expats</h4>
+      <p>Umzug aus Russland, Belarus oder der Ukraine? Wir verstehen Ihre Situation und sprechen Ihre Sprache — wörtlich. Von den ersten Schritten bis zur vollen Aufenthaltserlaubnis.</p>
+      <div class="lang-tags">
+        <span class="lang-tag">Русский</span>
+        <span class="lang-tag">English</span>
+      </div>
+    </div>
+    <div class="audience-card">
+      <div class="audience-flag">🇩🇪</div>
+      <h4>Deutschsprachige Unternehmer</h4>
+      <p>Montenegro bietet eine steuerlich attraktive, EU-nahe Basis mit einfachem Gesellschaftsrecht — ideal für Selbstständige, Freelancer und Gründer aus dem deutschsprachigen Raum.</p>
+      <div class="lang-tags">
+        <span class="lang-tag">Deutsch</span>
+        <span class="lang-tag">English</span>
+      </div>
+    </div>
+    <div class="audience-card">
+      <div class="audience-flag">🇬🇧</div>
+      <h4>Britische &amp; englischsprachige Kunden</h4>
+      <p>Post-Brexit-Planung, günstigeres Steuerumfeld oder einfach eine neue Basis in einem wachsenden europäischen Markt — Montenegro macht Sinn, und wir machen es unkompliziert.</p>
+      <div class="lang-tags">
+        <span class="lang-tag">English</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-label">Häufige Fragen</div>
+  <h2>Was uns am häufigsten<br>gefragt wird</h2>
+  <p class="section-intro">Kurze Antworten auf die gängigsten Fragen. Noch unsicher? Schreiben Sie uns einfach.</p>
+
+  <div class="faq-grid">
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Kann ich eine Aufenthaltserlaubnis ohne Immobilienkauf bekommen?
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a"><div class="faq-a-inner">Ja — einer der häufigsten Wege ist die Gründung einer DOO (GmbH) und die Übernahme der Geschäftsführung. Dies berechtigt zur Beantragung einer vorübergehenden Aufenthaltserlaubnis (privremeni boravak). Wir helfen bei der Firmengründung und anschließend beim Aufenthaltsantrag.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Wie lange dauert die Firmengründung?
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a"><div class="faq-a-inner">Bei vollständigen Unterlagen dauert die Registrierung beim CRPS in der Regel 5–10 Werktage. Die Steuerregistrierung folgt in einigen weiteren Tagen. Wir helfen Ihnen, alles beim ersten Anlauf korrekt einzureichen, um Verzögerungen zu vermeiden.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Muss ich Montenegrinisch sprechen, um mit Behörden umzugehen?
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a"><div class="faq-a-inner">Nein — genau dafür sind wir da. Wir begleiten Sie zu Terminen, kommunizieren in Ihrem Namen mit Behörden und übersetzen alles Wichtige. Sie müssen das nicht alleine navigieren.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Welche Buchführungspflichten hat eine kleine DOO?
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a"><div class="faq-a-inner">Jede DOO muss monatliche MwSt.-Erklärungen (falls MwSt.-pflichtig), vierteljährliche Steuervorauszahlungen, einen Jahresabschluss sowie eine Körperschaftsteuererklärung einreichen. Wir erklären Ihnen alles verständlich und verbinden Sie mit einem Buchhalter, der die Einreichungen übernimmt.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Kann ein Ausländer alleiniger Gründer und Geschäftsführer sein?
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a"><div class="faq-a-inner">Ja, absolut. Montenegro erlaubt 100% ausländisches Eigentum an einer DOO. Als alleiniger Gründer und Geschäftsführer können Sie auch eine vorübergehende Aufenthaltserlaubnis auf Basis der Geschäftsführerschaft beantragen.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Was kostet die Buchhaltung monatlich?
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a"><div class="faq-a-inner">Wir erledigen die Buchhaltung nicht selbst — wir vermitteln Sie an geprüfte lokale Buchhalter und bleiben involviert, damit alles reibungslos läuft. Die Kosten hängen vom Buchhalter und Ihrem Transaktionsvolumen ab. Wir geben Ihnen ein realistisches Bild, bevor Sie sich festlegen.</div></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section id="contact" class="contact-section">
+  <div class="section-label">Kontakt</div>
+  <h2>Sprechen wir über<br>Ihre Situation</h2>
+
+  <div class="contact-grid">
+    <div class="contact-info">
+      <h3>Wir freuen uns von Ihnen zu hören</h3>
+      <p>Ob Sie eine konkrete Frage haben oder gerade erst Ihre Möglichkeiten ausloten — melden Sie sich. Das Erstgespräch ist immer kostenlos.</p>
+
+      <div class="contact-details">
+        <div class="contact-row">
+          <div class="contact-row-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+          <div class="contact-row-text">Podgorica, Montenegro</div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-row-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
+          <div class="contact-row-text"><a href="mailto:infomaxconsulting@gmail.com">infomaxconsulting@gmail.com</a></div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-row-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.08 1.18a2 2 0 012-2.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 6.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7a2 2 0 011.72 2.01z"/>
+            </svg>
+          </div>
+          <div class="contact-row-text"><a href="tel:+38269000000">+382 69 000 000</a></div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-row-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+            </svg>
+          </div>
+          <div class="contact-row-text"><a href="https://t.me/maxconsultingmne">Telegram: @maxconsultingmne</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Ihr Name</label>
+          <input type="text" placeholder="Max Müller">
+        </div>
+        <div class="form-group">
+          <label>E-Mail</label>
+          <input type="email" placeholder="max@beispiel.de">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Ich brauche Hilfe mit</label>
+        <select>
+          <option value="">Thema auswählen…</option>
+          <option>Buchhaltung — Vermittlung eines Buchhalters</option>
+          <option>Firmengründung (DOO)</option>
+          <option>Aufenthaltserlaubnis (privremeni boravak)</option>
+          <option>Alles / noch unsicher</option>
+          <option>Sonstiges</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Erzählen Sie uns mehr</label>
+        <textarea placeholder="Was ist Ihre Situation? Woher kommen Sie, was möchten Sie aufbauen oder beantragen?"></textarea>
+      </div>
+      <button class="form-submit">Nachricht senden →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="footer-logo">Max <span>Consulting</span></a>
+  <span>Podgorica, Montenegro · infomaxconsulting@gmail.com</span>
+  <span>© 2025 Max Consulting. Alle Rechte vorbehalten.</span>
+</footer>
+
+<script>
+function toggleFaq(el) {
+  const item = el.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.service-card, .step, .audience-card, .faq-item, .stat-card').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
